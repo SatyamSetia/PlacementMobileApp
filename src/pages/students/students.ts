@@ -1,24 +1,22 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import StudentsList from '../students/students';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'students.html'
 })
-export class HomePage {
+export default class StudentsList {
 
   constructor(public navCtrl: NavController) {
 
   }
 
   items = [
-    'Manage Students',
-    'Manage Companies',
+    's1',
+    's2',
+    's3'
   ];
 
   itemSelected(item: string) {
     console.log("Selected Item", item);
-    this.navCtrl.push(StudentsList);
   }
 }
