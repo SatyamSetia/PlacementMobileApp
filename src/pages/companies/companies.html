@@ -10,7 +10,7 @@
 
   <ion-list>
     <ion-item *ngFor="let item of items">
-      <h2>{{item}}</h2>
+      <h2>{{item.name}}</h2>
       <button ion-button clear item-end (click)="itemSelected(item)">
         View
       </button>
@@ -18,7 +18,7 @@
   </ion-list>
   
   <ion-fab right bottom>
-    <button ion-fab>
+    <button ion-fab (click)='openCompanyForm()'>
       <ion-icon ios="ios-add" md="md-add"></ion-icon>
     </button>
   </ion-fab>

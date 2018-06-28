@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import StudentForm from '../studentForm/studentForm';
+import CompanyForm from '../companyForm/companyForm';
 
 @Component({
-  templateUrl: 'studentDetail.html'
+  templateUrl: 'companyDetail.html'
 })
 
-export default class StudentDetail {
+export default class CompanyDetail {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  student = this.navParams.data.item;
+  company = this.navParams.data.item;
 
-  openStudentForm(student: any) {
-    this.navCtrl.push(StudentForm,{
+  openCompanyForm(company: any) {
+    this.navCtrl.push(CompanyForm,{
       title: 'Edit',
       header: 'Update Details',
-      student: student
+      company: company
     });
   }
 }

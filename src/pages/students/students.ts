@@ -34,7 +34,6 @@ export default class StudentsList {
   ];
 
   itemSelected(item: any) {
-    console.log("Selected Item", item.name);
     this.navCtrl.push(StudentDetail,{
       item: item
     });

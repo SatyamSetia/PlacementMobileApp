@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{company.name}}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)='openCompanyForm(company)'>
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <div>
+        <span>Name</span>
+        <span class="align-right">{{company.name}}</span>
+      </div>
+      <div>
+        <span>Profile</span>
+        <span class="align-right">{{company.profile}}</span>
+      </div>
+      <div>
+        <span>Openings</span>
+        <span class="align-right">{{company.openings}}</span>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
