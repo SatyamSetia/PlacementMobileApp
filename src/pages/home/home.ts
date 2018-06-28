@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import StudentsList from '../students/students';
+import CompaniesList from '../companies/companies';
 
 @Component({
   selector: 'page-home',
@@ -12,13 +13,11 @@ export class HomePage {
 
   }
 
-  items = [
-    'Manage Students',
-    'Manage Companies',
-  ];
-
-  itemSelected(item: string) {
-    console.log("Selected Item", item);
+  manageStudentsSelected() {
     this.navCtrl.push(StudentsList);
+  }
+
+  manageCompaniesSelected() {
+  	this.navCtrl.push(CompaniesList);
   }
 }

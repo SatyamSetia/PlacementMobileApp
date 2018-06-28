@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Companies
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <h2>{{item}}</h2>
+      <button ion-button clear item-end (click)="itemSelected(item)">
+        View
+      </button>
+    </ion-item>
+  </ion-list>
+  
+  <button ion-button icon-start color="light" block>
+    <ion-icon ios="ios-add" md="md-add"></ion-icon>
+    Add New
+  </button>
+
+</ion-content>
