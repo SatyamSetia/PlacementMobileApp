@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import StudentDetail from '../studentDetail/studentDetail';
+import StudentForm from '../studentForm/studentForm';
 
 @Component({
   templateUrl: 'students.html'
@@ -37,5 +38,13 @@ export default class StudentsList {
     this.navCtrl.push(StudentDetail,{
       item: item
     });
+  }
+
+  openStudentForm() {
+    this.navCtrl.push(StudentForm, {
+      title: 'Create',
+      header: 'Enter Details',
+      student: {}
+    })
   }
 }

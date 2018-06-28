@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      {{header}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Name</ion-label>
+          <ion-input type="text" value={{student.name}} clearInput=true></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Branch</ion-label>
+          <ion-input type="text" value={{student.branch}} clearInput=true></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Roll No.</ion-label>
+          <ion-input type="number" value={{student.roll}} clearInput=true></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>CGPA</ion-label>
+          <ion-input type="number" value={{student.cgpa}} clearInput=true></ion-input>
+        </ion-item>
+      </ion-list>
+      <button ion-button color="light" block margin-top>
+        Save
+      </button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
