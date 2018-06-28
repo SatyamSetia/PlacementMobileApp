@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{student.name}}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <div>
+        <span>Name</span>
+        <span class="align-right">{{student.name}}</span>
+      </div>
+      <div>
+        <span>Branch</span>
+        <span class="align-right">{{student.branch}}</span>
+      </div>
+      <div>
+        <span>Roll No.</span>
+        <span class="align-right">{{student.roll}}</span>
+      </div>
+      <div>
+        <span>CGPA</span>
+        <span class="align-right">{{student.cgpa}}</span>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
