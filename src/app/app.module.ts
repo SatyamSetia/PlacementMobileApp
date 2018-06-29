@@ -13,6 +13,7 @@ import StudentDetail from '../pages/studentDetail/studentDetail';
 import StudentForm from '../pages/studentForm/studentForm';
 import CompanyDetail from '../pages/companyDetail/companyDetail';
 import CompanyForm from '../pages/companyForm/companyForm';
+import RegisterStudents from '../pages/registerStudents/registerStudents';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import CompanyForm from '../pages/companyForm/companyForm';
     StudentDetail,
     StudentForm,
     CompanyDetail,
-    CompanyForm
+    CompanyForm,
+    RegisterStudents
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import CompanyForm from '../pages/companyForm/companyForm';
     StudentDetail,
     StudentForm,
     CompanyDetail,
-    CompanyForm
+    CompanyForm,
+    RegisterStudents
   ],
   providers: [
     StatusBar,

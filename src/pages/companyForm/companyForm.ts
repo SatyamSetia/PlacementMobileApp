@@ -5,7 +5,7 @@ import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
 
 @Component({
-	templateUrl: "companyFOrm.html"
+	templateUrl: "companyForm.html"
 })
 export default class CompanyForm {
 	constructor(

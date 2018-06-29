@@ -28,6 +28,19 @@
       </div>
     </ion-card-content>
   </ion-card>
+  <ion-card>
+    <ion-card-header>Registered Students</ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let student of regStudents">
+          {{student.name}}
+        </ion-item>
+      </ion-list>
+      <button ion-button full color="light" (click)='openUnregisteredStudents()'>
+        <ion-label>Register More</ion-label>
+      </button>
+    </ion-card-content>
+  </ion-card>
   <ion-fab right bottom>
     <button color="danger" ion-fab (click)='deleteCompany()'>
       <ion-icon ios="ios-trash" md="md-trash"></ion-icon>

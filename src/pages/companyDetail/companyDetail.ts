@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import CompanyForm from "../companyForm/companyForm";
+import RegisterStudents from '../registerStudents/registerStudents';
 import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
 import { ToastController } from "ionic-angular";
@@ -14,9 +15,47 @@ export default class CompanyDetail {
     public navParams: NavParams,
     public http: Http,
     private toastCtrl: ToastController
-  ) {}
+  ) {
+    this.fetchRegStudents();
+    this.fetchAllStudents();
+  }
 
   company = this.navParams.data.company;
+  allStudents = [];
+  regStudents = [];
+  unregStudents = [];
+
+  fetchRegStudents() {
+    this.company.students.map(id =>
+      this.http
+        .get(`http://localhost:8080/students/${id}`)
+        .map(res => res.json())
+        .subscribe(data => this.regStudents.push(data[0]))
+    );
+  }
+
+  fetchAllStudents() {
+    this.http
+      .get("http://localhost:8080/students")
+      .map(res => res.json())
+      .subscribe(data => {
+        this.allStudents = data;
+      });
+  }
+
+  getUnregStudents() {
+    for(var i=0;i<this.allStudents.length;i++){
+      var found = false;
+      for(var j=0;j<this.regStudents.length;j++){
+        if(this.allStudents[i]._id===this.regStudents[j]._id){
+          found = true;
+        }
+      }
+      if(!found){
+        this.unregStudents.push(this.allStudents[i]);
+      }
+    }
+  }
 
   presentToast(message) {
     let toast = this.toastCtrl.create({
@@ -30,6 +69,14 @@ export default class CompanyDetail {
     });
 
     toast.present();
+  }
+
+  openUnregisteredStudents() {
+    this.getUnregStudents();
+    this.navCtrl.push(RegisterStudents,{
+      students: this.unregStudents,
+      company: this.company
+    })
   }
 
   openCompanyForm(company: any) {
