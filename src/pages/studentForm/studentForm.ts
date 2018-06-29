@@ -13,19 +13,11 @@ export default class StudentForm {
 		public navParams: NavParams,
 		public http: Http,
 		private toastCtrl: ToastController
-	) {
-		if (this.title === "Create") {
-			console.log("create mode");
-			// this.http.post('http://localhost:8080/addStudent',{
-			// 	name: 's13',
-			// 	department: 'me',
-			// 	rollNo: '24',
-			// 	cgpa: '9'
-			// }).subscribe(data => console.log(data));
-		} else {
-			console.log("edit mode");
-		}
-	}
+	) {}
+
+	title = this.navParams.data.title;
+	header = this.navParams.data.header;
+	editStudent = this.navParams.data.student;
 
 	presentToast(message) {
 		let toast = this.toastCtrl.create({
@@ -41,12 +33,12 @@ export default class StudentForm {
 		toast.present();
 	}
 
-	student = {
+	student = this.title === "Create"?{
 		name: null,
 		department: null,
 		rollNo: null,
 		cgpa: null
-	};
+	}:this.editStudent;
 
 	onNameChange(e: any) {
 		this.student.name = e.target.value;
@@ -65,10 +57,20 @@ export default class StudentForm {
 	}
 
 	handleSave() {
-		if (this.validate()) {
-			this.http.post('http://localhost:8080/addStudent',this.student).subscribe(data => console.log(data));
-			this.presentToast(`A new student ${this.student.name} is registered.`);
-			this.navCtrl.pop();
+		this.student.rollNo += "";
+		this.student.cgpa += "";
+		if (this.title === "Create") {
+			if (this.validate()) {
+				this.http.post('http://localhost:8080/addStudent',this.student).subscribe(data => console.log(data));
+				this.presentToast(`A new student ${this.student.name} is registered.`);
+				this.navCtrl.pop();
+			}
+		} else {
+			if(this.validate()) {
+				this.http.put(`http://localhost:8080/editStudent/${this.editStudent._id}`, this.student).subscribe(data => console.log(data));
+				this.presentToast(`A student named ${this.student.name} is updated.`);
+				this.navCtrl.pop();
+			}
 		}
 	}
 
@@ -95,8 +97,4 @@ export default class StudentForm {
 			return true;
 		}
 	}
-
-	title = this.navParams.data.title;
-	header = this.navParams.data.header;
-	editStudent = this.navParams.data.student;
 }
