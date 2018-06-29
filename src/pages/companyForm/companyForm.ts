@@ -52,7 +52,6 @@ export default class CompanyForm {
 	}
 
 	handleSave() {
-		this.company.openings += "";
 		if (this.title === "Register Company") {
 			if (this.validate()) {
 				this.http.post('http://localhost:8080/registerCompany',this.company).subscribe(data => console.log(data));
@@ -76,7 +75,7 @@ export default class CompanyForm {
 			this.presentToast('Profile cannot be empty');
 			return false;
 		} else if (this.company.openings === null) {
-			this.presentToast('Openings No cannot be empty');
+			this.presentToast('Openings cannot be empty');
 			return false;
 		} else if(isNaN(this.company.openings) || this.company.openings<1){
 			this.presentToast('Invalid Openings');

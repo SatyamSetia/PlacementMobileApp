@@ -23,7 +23,6 @@ export default class CompaniesList {
   }
   
   ionViewWillEnter() {
-    console.log('reloaded');
     this.fetchCompanies();
   }
 
