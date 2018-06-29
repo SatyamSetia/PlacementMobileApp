@@ -2,40 +2,25 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import StudentDetail from '../studentDetail/studentDetail';
 import StudentForm from '../studentForm/studentForm';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   templateUrl: 'students.html'
 })
 export default class StudentsList {
 
-  constructor(public navCtrl: NavController) {
+  students: any = null;
 
+  constructor(public navCtrl: NavController, public http: Http) {
+    this.http.get('http://localhost:8080/students').map(res => res.json()).subscribe(data => {
+      this.students = data;
+    });
   }
 
-  items = [
-    {
-      name: 's1',
-      branch: 'cse',
-      roll: 12,
-      cgpa: 7
-    },
-    {
-      name: 's2',
-      branch: 'ece',
-      roll: 17,
-      cgpa: 6
-    },
-    {
-      name: 's3',
-      branch: 'it',
-      roll: 20,
-      cgpa: 8
-    }
-  ];
-
-  itemSelected(item: any) {
+  studentSelected(student: any) {
     this.navCtrl.push(StudentDetail,{
-      item: item
+      student: student
     });
   }
 

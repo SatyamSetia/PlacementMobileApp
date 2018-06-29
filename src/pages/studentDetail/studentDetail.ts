@@ -11,7 +11,7 @@ export default class StudentDetail {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  student = this.navParams.data.item;
+  student = this.navParams.data.student;
 
   openStudentForm(student: any) {
     this.navCtrl.push(StudentForm,{
