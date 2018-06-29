@@ -11,7 +11,7 @@ export default class CompanyDetail {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  company = this.navParams.data.item;
+  company = this.navParams.data.company;
 
   openCompanyForm(company: any) {
     this.navCtrl.push(CompanyForm,{

@@ -28,7 +28,7 @@ export default class CompaniesList {
 
   companySelected(company: any) {
     this.navCtrl.push(CompanyDetail,{
-      item: this.companies
+      company: company
     })
   }
 
