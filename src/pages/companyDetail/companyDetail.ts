@@ -94,4 +94,12 @@ export default class CompanyDetail {
     this.presentToast(`A company named ${this.company.name} is deleted.`);
     this.navCtrl.pop();
   }
+
+  unregister(student: any) {
+    this.http.put(`http://localhost:8080/unregisterStudent/${student._id}`,{
+      companyId: this.company._id
+    }).subscribe(data => console.log(data));
+    this.presentToast(`${student.name} is unregistered from ${this.company.name}`);
+    this.regStudents = this.regStudents.filter(st => st._id!==student._id);
+  }
 }

@@ -34,6 +34,9 @@
       <ion-list>
         <ion-item *ngFor="let student of regStudents">
           {{student.name}}
+          <button ion-button item-end clear icon-only (click)='unregister(student)'>
+            <ion-icon ios="ios-remove-circle" md="md-remove-circle"></ion-icon>
+          </button>
         </ion-item>
       </ion-list>
       <button ion-button full color="light" (click)='openUnregisteredStudents()'>
