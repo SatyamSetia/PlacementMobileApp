@@ -15,23 +15,23 @@
       <ion-list>
         <ion-item>
           <ion-label floating>Name</ion-label>
-          <ion-input type="text" value={{student.name}} clearInput=true></ion-input>
+          <ion-input type="text" value={{editStudent.name}} (input)="onNameChange($event)"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>Branch</ion-label>
-          <ion-input type="text" value={{student.branch}} clearInput=true></ion-input>
+          <ion-input type="text" value={{editStudent.department}} (input)="onDeptChange($event)"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>Roll No.</ion-label>
-          <ion-input type="number" value={{student.roll}} clearInput=true></ion-input>
+          <ion-input type="text" value={{editStudent.rollNo}} (input)="onRollChange($event)"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>CGPA</ion-label>
-          <ion-input type="number" value={{student.cgpa}} clearInput=true></ion-input>
+          <ion-input type="text" value={{editStudent.cgpa}} (input)="onCgpaChange($event)"></ion-input>
         </ion-item>
       </ion-list>
-      <button ion-button color="light" block margin-top>
-        Save
+      <button ion-button color="light" block margin-top (click)='handleSave()'>
+        <ion-label>Save</ion-label>
       </button>
     </ion-card-content>
   </ion-card>

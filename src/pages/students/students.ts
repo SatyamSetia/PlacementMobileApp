@@ -13,6 +13,14 @@ export default class StudentsList {
   students: any = null;
 
   constructor(public navCtrl: NavController, public http: Http) {
+    this.fetchStudents();
+  }
+
+  ionViewWillEnter() {
+    this.fetchStudents();
+  }
+
+  fetchStudents() {
     this.http.get('http://localhost:8080/students').map(res => res.json()).subscribe(data => {
       this.students = data;
     });
