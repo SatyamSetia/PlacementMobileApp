@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { ToastController } from "ionic-angular";
+import { ROOT_URL } from '../../utils';
 
 @Component({
   templateUrl: 'registerStudents.html'
@@ -34,7 +35,7 @@ export default class RegisterStudents {
   company = this.navParams.data.company;
 
   register(student: any){
-    this.http.put(`http://localhost:8080/registerStudent/${student._id}`,{
+    this.http.put(`${ROOT_URL}/registerStudent/${student._id}`,{
       companyId: this.company._id
     }).subscribe(data => console.log(data));
     this.presentToast(`${student.name} is registered for ${this.company.name}`);

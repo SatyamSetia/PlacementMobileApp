@@ -4,6 +4,7 @@ import CompanyForm from '../companyForm/companyForm';
 import CompanyDetail from '../companyDetail/companyDetail';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { ROOT_URL } from '../../utils';
 
 @Component({
   templateUrl: 'companies.html'
@@ -17,7 +18,7 @@ export default class CompaniesList {
   }
 
   fetchCompanies() {
-    this.http.get('http://localhost:8080/companies').map(res => res.json()).subscribe(data => {
+    this.http.get(`${ROOT_URL}/companies`).map(res => res.json()).subscribe(data => {
       this.companies = data;
     });
   }

@@ -3,6 +3,7 @@ import { ToastController } from "ionic-angular";
 import { NavController, NavParams } from "ionic-angular";
 import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
+import { ROOT_URL } from '../../utils';
 
 @Component({
 	templateUrl: "studentForm.html"
@@ -61,13 +62,13 @@ export default class StudentForm {
 		this.student.cgpa += "";
 		if (this.title === "Create") {
 			if (this.validate()) {
-				this.http.post('http://localhost:8080/addStudent',this.student).subscribe(data => console.log(data));
+				this.http.post(`${ROOT_URL}/addStudent`,this.student).subscribe(data => console.log(data));
 				this.presentToast(`A new student ${this.student.name} is registered.`);
 				this.navCtrl.pop();
 			}
 		} else {
 			if(this.validate()) {
-				this.http.put(`http://localhost:8080/editStudent/${this.editStudent._id}`, this.student).subscribe(data => console.log(data));
+				this.http.put(`${ROOT_URL}/editStudent/${this.editStudent._id}`, this.student).subscribe(data => console.log(data));
 				this.presentToast(`A student named ${this.student.name} is updated.`);
 				this.navCtrl.pop();
 			}

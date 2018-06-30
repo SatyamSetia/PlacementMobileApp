@@ -5,6 +5,7 @@ import RegisterStudents from '../registerStudents/registerStudents';
 import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
 import { ToastController } from "ionic-angular";
+import { ROOT_URL } from '../../utils';
 
 @Component({
   templateUrl: "companyDetail.html"
@@ -28,7 +29,7 @@ export default class CompanyDetail {
   fetchRegStudents() {
     this.company.students.map(id =>
       this.http
-        .get(`http://localhost:8080/students/${id}`)
+        .get(`${ROOT_URL}/students/${id}`)
         .map(res => res.json())
         .subscribe(data => this.regStudents.push(data[0]))
     );
@@ -36,7 +37,7 @@ export default class CompanyDetail {
 
   fetchAllStudents() {
     this.http
-      .get("http://localhost:8080/students")
+      .get(`${ROOT_URL}/students`)
       .map(res => res.json())
       .subscribe(data => {
         this.allStudents = data;
@@ -89,14 +90,14 @@ export default class CompanyDetail {
 
   deleteCompany() {
     this.http
-      .delete(`http://localhost:8080/unregisterCompany/${this.company._id}`)
+      .delete(`${ROOT_URL}/unregisterCompany/${this.company._id}`)
       .subscribe(data => console.log(data));
     this.presentToast(`A company named ${this.company.name} is deleted.`);
     this.navCtrl.pop();
   }
 
   unregister(student: any) {
-    this.http.put(`http://localhost:8080/unregisterStudent/${student._id}`,{
+    this.http.put(`${ROOT_URL}/unregisterStudent/${student._id}`,{
       companyId: this.company._id
     }).subscribe(data => console.log(data));
     this.presentToast(`${student.name} is unregistered from ${this.company.name}`);

@@ -3,6 +3,7 @@ import { ToastController } from "ionic-angular";
 import { NavController, NavParams } from "ionic-angular";
 import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
+import { ROOT_URL } from '../../utils';
 
 @Component({
 	templateUrl: "companyForm.html"
@@ -54,16 +55,16 @@ export default class CompanyForm {
 	handleSave() {
 		if (this.title === "Register Company") {
 			if (this.validate()) {
-				this.http.post('http://localhost:8080/registerCompany',this.company).subscribe(data => console.log(data));
+				this.http.post(`${ROOT_URL}/registerCompany`,this.company).subscribe(data => console.log(data));
 				this.presentToast(`A new company ${this.company.name} is registered.`);
 				this.navCtrl.pop();
 			}
 		} else {
-			// if(this.validate()) {
-			// 	this.http.put(`http://localhost:8080/editStudent/${this.editStudent._id}`, this.student).subscribe(data => console.log(data));
-			// 	this.presentToast(`A student named ${this.student.name} is updated.`);
-			// 	this.navCtrl.pop();
-			// }
+			if(this.validate()) {
+				this.http.put(`${ROOT_URL}/editCompany/${this.editCompany._id}`, this.company).subscribe(data => console.log(data));
+				this.presentToast(`A company named ${this.company.name} is updated.`);
+				this.navCtrl.pop();
+			}
 		}
 	}
 

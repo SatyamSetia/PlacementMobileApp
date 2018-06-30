@@ -4,6 +4,7 @@ import StudentDetail from '../studentDetail/studentDetail';
 import StudentForm from '../studentForm/studentForm';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { ROOT_URL } from '../../utils';
 
 @Component({
   templateUrl: 'students.html'
@@ -21,7 +22,7 @@ export default class StudentsList {
   }
 
   fetchStudents() {
-    this.http.get('http://localhost:8080/students').map(res => res.json()).subscribe(data => {
+    this.http.get(`${ROOT_URL}/students`).map(res => res.json()).subscribe(data => {
       this.students = data;
     });
   }

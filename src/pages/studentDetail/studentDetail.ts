@@ -4,6 +4,7 @@ import { NavController, NavParams } from "ionic-angular";
 import StudentForm from "../studentForm/studentForm";
 import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
+import { ROOT_URL } from '../../utils';
 
 @Component({
   templateUrl: "studentDetail.html"
@@ -41,7 +42,7 @@ export default class StudentDetail {
   }
 
   deleteStudent() {
-    this.http.delete(`http://localhost:8080/removeStudent/${this.student._id}`).subscribe(data => console.log(data));
+    this.http.delete(`${ROOT_URL}/removeStudent/${this.student._id}`).subscribe(data => console.log(data));
     this.presentToast(`A student named ${this.student.name} is deleted.`);
     this.navCtrl.pop();
   }
